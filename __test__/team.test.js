@@ -6,13 +6,13 @@ describe('team profile generator',()=>{
         
         it('should store manager info command line entry in an object', ()=>{
             const test = ['lukas', 335, 'lukas@gmail.com', 202];//team manager’s name, employee ID, email address, and office number
-            const result = new Manager(test);
+            const result = new index.Manager(test);
             expect([result.name, result.employeeId, result.email, result.officeNumber]).toEqual(test);
         });
         it('should store engineer info command line entry in an object', ()=>{
             const test = ['yilun', 777, 'yilun@gmail.com', 'yxx-dev'];//engineer’s name, ID, email, and GitHub username
             const result = new Engineer(test);
-            expect([result.name, result.employeeId, result.email, result.gitHubUserName]).toEqual(test);
+            expect([result.name, result.employeeId, result.email, result.githubUsername]).toEqual(test);
         });
         it('should store intern info command line entry in an object', ()=>{
             const test = ['lol', 345, 'lol@gmail.com', 'uw'];//intern’s name, ID, email, and school
