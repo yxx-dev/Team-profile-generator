@@ -9,7 +9,7 @@ let managerCurrent =[];
 let engineerCurrent =[];
 let internCurrent =[];
 
-//getManagerData();
+getManagerData();
 //getEngineerData();
 //getInternData();
 
@@ -39,8 +39,13 @@ function getManagerData () {
         },
     ])
     .then(a => {
-        managerCurrent.push(new Manager(a.name, a.employeeId, a.email, a.officeNumber));
-        console.log(managerCurrent);
+        let data = [a.name, a.employeeId, a.email, a.officeNumber];
+        let validity = true;
+        data.forEach((entry) => entry === '' ? validity = false : null);
+        if (validity === true) {
+            managerCurrent.push(new Manager(...data));
+            console.log(managerCurrent);
+        } else console.error('incomplete entries');
     });
 };
 
@@ -71,8 +76,15 @@ function getEngineerData () {
         },
     ])
     .then(a => {
-        engineerCurrent.push(new Engineer(a.name, a.employeeId, a.email, a.githubUsername));
-        console.log(engineerCurrent);
+        //engineerCurrent.push(new Engineer(a.name, a.employeeId, a.email, a.githubUsername));
+        //console.log(engineerCurrent);
+        let data = [a.name, a.employeeId, a.email, a.githubUsername];
+        let validity = true;
+        data.forEach((entry) => entry === '' ? validity = false : null);
+        if (validity === true) {
+            engineerCurrent.push(new Engineer(...data));
+            console.log(engineerCurrent);
+        } else console.error('incomplete entries');
     });
 };
 
@@ -102,7 +114,14 @@ function getInternData () {
         },
     ])
     .then(a => {
-        internCurrent.push(new Intern(a.name, a.employeeId, a.email, a.school));
-        console.log(internCurrent);
+        //internCurrent.push(new Intern(a.name, a.employeeId, a.email, a.school));
+        //console.log(internCurrent);
+        let data = [a.name, a.employeeId, a.email, a.school];
+        let validity = true;
+        data.forEach((entry) => entry === '' ? validity = false : null);
+        if (validity === true) {
+            internCurrent.push(new Intern(...data));
+            console.log(internCurrent);
+        } else console.error('incomplete entries');
     });
 };

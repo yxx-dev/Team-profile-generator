@@ -20,7 +20,7 @@ describe('Employee',()=>{
         it('should prompt again', ()=>{
             const test = ['', , ''];//employee's name, employee ID, email address
             const result = new Employee(test);
-            const err = new Error('invalid entries');
+            const err = new Error('incomplete entries');
             expect(result).toThrowError(err);
         });
 /*
