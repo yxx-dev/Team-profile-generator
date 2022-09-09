@@ -6,20 +6,20 @@ describe('Employee',()=>{
         //postive test
         it('should store employee data in an object from command line entry', ()=>{
             const test = ['lukas', 335, 'lukas@gmail.com'];//employee's name, employee ID, email address
-            const result = new Employee(test);
+            const result = new Employee(...test);
             expect([result.name, result.employeeId, result.email, result.officeNumber]).toEqual(test);
         });
         //negative test
         it('should prompt again', ()=>{
             const test = ['test', 222];//employee's name, employee ID, email address
-            const result = new Employee(test);
+            const result = new Employee(...test);
             const err = new Error('incomplete entries');
             expect(result).toThrowError(err);
         });
         //exception test
         it('should prompt again', ()=>{
             const test = ['', , ''];//employee's name, employee ID, email address
-            const result = new Employee(test);
+            const result = new Employee(...test);
             const err = new Error('incomplete entries');
             expect(result).toThrowError(err);
         });
