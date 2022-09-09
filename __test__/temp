@@ -1,6 +1,7 @@
 const index = require('../index');
 
 describe('team profile generator',()=>{
+
     //tests of behavior receiving data from command line
     describe('inquirer',()=>{
         
