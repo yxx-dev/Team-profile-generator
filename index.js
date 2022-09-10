@@ -5,10 +5,11 @@ const fs = require('fs');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
-let managerCurrent =[];
+let managerCurrent = {};
 let engineerCurrent =[];
 let internCurrent =[];
 
+//getRole();
 getManagerData();
 //getEngineerData();
 //getInternData();
@@ -19,22 +20,22 @@ function getManagerData () {
     .prompt([
         {
             type: 'input',
-            message: 'Please input team manager’s name',
+            message: 'Please input team manager name',
             name: 'name',
         },
         {
             type: 'input',
-            message: 'Please input team manager’s employee ID',
+            message: 'Please input team manager employee ID',
             name: 'employeeId',
         },
         {
             type: 'input',
-            message: 'Please input team manager’s email address',
+            message: 'Please input team manager email address',
             name: 'email',
         },
         {
             type: 'input',
-            message: 'Please input team manager’s office number',
+            message: 'Please input team manager office number',
             name: 'officeNumber',
         },
     ])
@@ -43,12 +44,44 @@ function getManagerData () {
         let validity = true;
         data.forEach((entry) => entry === '' ? validity = false : null);
         if (validity === true) {
-            managerCurrent.push(new Manager(...data));
+            managerCurrent = new Manager(...data);
             console.log(managerCurrent);
-        } else console.error('incomplete entries');
+            getRole();
+        } else {
+            console.error('incomplete entries');
+            //managerCurrent = {};
+            getManagerData();
+            }
     });
 };
 
+//select a role (engineer or intern) to add
+function getRole () {
+    inquirer.prompt([
+        {
+            type: 'list',
+            name: 'role',
+            message: 'If adding a team member, select a role:',
+            choices: ['engineer', 'intern', 'exit'],
+        }
+    ])
+    .then(a => {
+        switch (a.role) {
+            case 'exit' :
+                console.log('time to print');
+                break;
+            case 'engineer' :
+                console.log(`adding ${a.role}`);
+                getEngineerData();
+                break;
+            case 'intern' : 
+                console.log(`adding ${a.role}`);
+                getInternData();
+                break;
+        }
+         
+    })
+}
 
 //prompting for engineer entries
 function getEngineerData () {
@@ -56,22 +89,22 @@ function getEngineerData () {
     .prompt([
         {
             type: 'input',
-            message: 'Please input name',
+            message: 'Please input engineer name',
             name: 'name',
         },
         {
             type: 'input',
-            message: 'Please input employee ID',
+            message: 'Please input engineer employee ID',
             name: 'employeeId',
         },
         {
             type: 'input',
-            message: 'Please input email address',
+            message: 'Please input engineer email address',
             name: 'email',
         },
         {
             type: 'input',
-            message: 'Please input GitHub username',
+            message: 'Please input engineer GitHub username',
             name: 'githubUsername',
         },
     ])
@@ -84,7 +117,12 @@ function getEngineerData () {
         if (validity === true) {
             engineerCurrent.push(new Engineer(...data));
             console.log(engineerCurrent);
-        } else console.error('incomplete entries');
+            getRole();
+        } else {
+            console.error('incomplete entries');
+            getEngineerData();
+        }
+            
     });
 };
 
@@ -94,22 +132,22 @@ function getInternData () {
     .prompt([
         {
             type: 'input',
-            message: 'Please input name',
+            message: 'Please input intern name',
             name: 'name',
         },
         {
             type: 'input',
-            message: 'Please input employee ID',
+            message: 'Please input intern employee ID',
             name: 'employeeId',
         },
         {
             type: 'input',
-            message: 'Please input email address',
+            message: 'Please input intern email address',
             name: 'email',
         },
         {
             type: 'input',
-            message: 'Please input school',
+            message: 'Please input intern school',
             name: 'school',
         },
     ])
@@ -122,6 +160,10 @@ function getInternData () {
         if (validity === true) {
             internCurrent.push(new Intern(...data));
             console.log(internCurrent);
-        } else console.error('incomplete entries');
+            getRole();
+        } else {
+            console.error('incomplete entries');
+            getInternData();
+        }
     });
 };
