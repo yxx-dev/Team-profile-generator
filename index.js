@@ -6,7 +6,7 @@ const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 
-let builtHtml = require('./lib/html-building-blocks'); 
+let buildHtml = require('./lib/html-building-blocks'); 
 let managerCurrent = {};
 let engineerCurrent =[];
 let internCurrent =[];
@@ -73,10 +73,12 @@ function getRole () {
         switch (a.role) {
             case 'exit' :
                 console.log('time to print');
-                let finalHtml = builtHtml(managerCurrent, engineerCurrent, internCurrent);
-                fs.writeFile('./dist/index.html','', 
-                    fs.writeFile('./dist/index.html', finalHtml, 
-                        (err) => err ? console.error(err) : console.log('data recorded')));
+                let finalHtml = buildHtml(managerCurrent, engineerCurrent, internCurrent);
+                fs.writeFile('./dist/index.html','', () => {
+                    fs.writeFile('./dist/index.html', finalHtml, ()=>{
+                        (err) => err ? console.error(err) : console.log('data recorded');
+                    })
+                });
                 break;
             case 'engineer' :
                 console.log(`adding ${a.role}`);
