@@ -1,6 +1,8 @@
+/*
 body, * {
     border:1px solid black
 }
+*/
 
 header {
     height:10vh;
@@ -9,6 +11,8 @@ header {
     justify-content: center;
     align-items: center;
 }
+
+
 /*
 article {
     display: flex;
