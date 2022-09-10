@@ -4,7 +4,9 @@
 A node.js command-line application that takes in information about employees on a software engineering team and generates an HTML webpage that displays summaries for each person.
 
 Functions: 
-1. coming soon
+1. command line input with inquirer
+2. dynamically make HTML
+3. unit test
 
 ## Table of Contents (Optional)
 NA
@@ -31,4 +33,4 @@ JavaScript, Node.js, npm, unit tests
 Coming soon...
 
 ## Tests
-Unit tests (./test)
+Unit tests (./__test__)
