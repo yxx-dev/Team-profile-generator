@@ -6,12 +6,11 @@ const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 
+//import function to build html
 let buildHtml = require('./lib/html-building-blocks'); 
 let managerCurrent = {};
 let engineerCurrent =[];
 let internCurrent =[];
-
-
 
 //getRole();
 getManagerData();
