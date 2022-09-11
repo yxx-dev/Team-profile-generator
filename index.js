@@ -75,9 +75,9 @@ function getRole () {
                 console.log('time to print');
                 let finalHtml = buildHtml(managerCurrent, engineerCurrent, internCurrent);
                 fs.writeFile('./dist/index.html','', () => {
-                    fs.writeFile('./dist/index.html', finalHtml, ()=>{
-                        (err) => err ? console.error(err) : console.log('data recorded');
-                    })
+                    fs.writeFile('./dist/index.html', finalHtml, (err) => 
+                        err ? console.error(err) : console.log('data recorded')
+                    )
                 });
                 break;
             case 'engineer' :
