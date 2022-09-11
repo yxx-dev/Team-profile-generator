@@ -2,6 +2,7 @@
 
 ## Description
 A node.js command-line application that takes in information about employees on a software engineering team and generates an HTML webpage that displays summaries for each person.
+Walk-through video: https://drive.google.com/file/d/1niAWKtLdB8BJhHFr3ELe3bu9pb_emFY0/view
 
 Functions: 
 1. command line input with inquirer
